@@ -270,7 +270,8 @@ def get_obj365_pretrained_checkpoint(encoder_variant):  # pylint: disable=missin
 
 
 def get_multi_task_checkpoint_dir(encoder_variant, image_size):  # pylint: disable=missing-function-docstring
-  CKPT_PREFIX = 'gs://pix2seq'
+  # CKPT_PREFIX = 'gs://pix2seq'
+  CKPT_PREFIX = './gs_local'
   if encoder_variant == 'vit-b' and image_size == (640, 640):
     return f'{CKPT_PREFIX}/multi_task/ckpt/vit_b_640x640'
   elif encoder_variant == 'vit-b' and image_size == (1024, 1024):
@@ -280,5 +281,6 @@ def get_multi_task_checkpoint_dir(encoder_variant, image_size):  # pylint: disab
 
 
 def get_tokenizer_path():  # pylint: disable=missing-function-docstring
-  PREFIX = 'gs://pix2seq'
+  # PREFIX = 'gs://pix2seq'
+  PREFIX = './gs_local'
   return f'{PREFIX}/multi_task/data/c4_en_32k_spm.model'
