@@ -358,6 +358,7 @@ def restore_from_checkpoint(model_dir, except_partial, **kwargs):
   """
   verify_restored = None
   checkpoint = tf.train.Checkpoint(**kwargs)
+  checkpoint.optimizer=tf.keras.optimizers.legacy.Optimizer(checkpoint.optimizer)
   latest_ckpt = tf.train.latest_checkpoint(model_dir)
   if latest_ckpt:
     logging.info('Restoring from latest checkpoint: %s', latest_ckpt)
